@@ -6,15 +6,19 @@ function App() {
   const [num2, setNum2] = useState(0);
   const [result, setResult] = useState(0);
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents page reload
-    const sum = Number(num1) + Number(num2); // Convert strings to numbers
-    setResult(sum);
+  const handleAdd = (e) => {
+    e.preventDefault();
+    setResult(Number(num1) + Number(num2));
+  };
+
+  const handleSubtract = (e) => {
+    e.preventDefault();
+    setResult(Number(num1) - Number(num2));
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="number"
           placeholder="Enter first number"
@@ -27,7 +31,8 @@ function App() {
           value={num2}
           onChange={(e) => setNum2(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button onClick={handleAdd}>Add</button>
+        <button onClick={handleSubtract}>Subtract</button>
       </form>
 
       <h2>Result: {result}</h2>
